@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useState } from 'react';
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
@@ -10,15 +11,18 @@ import TextField from '@mui/material/TextField';
 import FormControl from '@mui/material/FormControl';
 import Button from '@mui/material/Button';
 import SendIcon from '@mui/icons-material/Send';
+import { useNavigate } from "react-router-dom";
 
-const Item = styled(Paper)(({ theme }) => ({
+const Item = styled(Box)(({ theme }) => ({
 	padding: theme.spacing(6),
 	textAlign: 'center',
+	borderRadius: '3px',
 	color: theme.palette.text.secondary,
 	display: 'flex',
 	flexDirection: 'column',
 	rowGap: '10px',
-  }));
+	width: '400px'
+}));
 
 const ValidationTextField = styled(TextField)({
 	'& input:valid + fieldset': {
@@ -36,30 +40,40 @@ const ValidationTextField = styled(TextField)({
 });
 
 export function Login() {
+	const [username, setUsername] = useState();
+	const [password, setPassword] = useState();
+
+	const handlesubmit = () => {
+		console.log(username + password);
+		alert(username + password);
+	}
+
 	return (
-		<Box sx={{ height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: '#F7F7F8' }}>
+		<Box sx={{ height: '100vh', width: '100vw', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', backgroundColor: '#F7F7F8' }}>
 			<Grid container padding={10} xl={4}>
-				<Grid xs={12}>
+				<Grid xs={12} padding="0px">
 					<Item>
 						<ValidationTextField
 							label="Username"
 							type="text"
 							variant="outlined"
-							id="validation-outlined-input"
-							size="small"
+							id="username"
+							size="medium"
 							autoComplete='off'
 							required
+							onChange={(e) => setUsername(e.target.value)}
 						/>
 						<ValidationTextField
 							label="Password"
 							type="password"
 							variant="outlined"
-							id="validation-outlined-input"
-							size="small"
+							id="password"
+							size="medium"
 							autoComplete='off'
 							required
+							onChange={(e) => setPassword(e.target.value)}
 						/>
-						<Button variant="contained" endIcon={<SendIcon />}>
+						<Button size="large" onClick={handlesubmit} variant="contained" endIcon={<SendIcon />}>
 							Login
 						</Button>
 					</Item>

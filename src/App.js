@@ -1,9 +1,9 @@
 import * as React from 'react';
 import './App.css';
-import Appbar from './component/Appbar.js';
-import {Login} from './component/Login.js';
+import Home from './page/Home.jsx';
+import {Login} from './component/Login.jsx';
 import CssBaseline from '@mui/material/CssBaseline';
-import Container from '@mui/material/Container';
+
 
 
 function App() {
