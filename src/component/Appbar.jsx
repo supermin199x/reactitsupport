@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useNavigate } from "react-router-dom";
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -13,12 +14,13 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 
-const pages = ['งานซ่อม', 'รายงาน', 'รายการอุปกรณ์'];
-const settings = ['ข้อมูลส่วนตัว','ออกจากระบบ'];
+const settings = ['ออกจากระบบ'];
 
 function ResponsiveAppBar() {
 	const [anchorElNav, setAnchorElNav] = React.useState(null);
 	const [anchorElUser, setAnchorElUser] = React.useState(null);
+	let navigate = useNavigate();
+
 
 	const handleOpenNavMenu = (event) => {
 		setAnchorElNav(event.currentTarget);
@@ -35,6 +37,38 @@ function ResponsiveAppBar() {
 		setAnchorElUser(null);
 	};
 
+	const goJoblist = () => {
+		setAnchorElNav(null);
+		navigate('/joblist');
+	};
+
+	const goReport = () => {
+		setAnchorElNav(null);
+		navigate('/report');
+	};
+
+	const goDevice = () => {
+		setAnchorElNav(null);
+		navigate('/device');
+	};
+
+	const logout = () => {
+		navigate('/');
+	};
+
+	const goJoblistMenu = (event) => {
+		setAnchorElNav(event.currentTarget);
+		navigate('/joblist');
+	};
+	const goReportMenu = (event) => {
+		setAnchorElNav(event.currentTarget);
+		navigate('/report');
+	};
+	const goDeviceMenu = (event) => {
+		setAnchorElNav(event.currentTarget);
+		navigate('/device');
+	};
+
 	return (
 		<AppBar position="static" color="primary">
 			<Container maxWidth="Fluid">
@@ -43,7 +77,6 @@ function ResponsiveAppBar() {
 						variant="h4"
 						noWrap
 						component="a"
-						href="/"
 						sx={{
 							mr: 2,
 							display: { xs: 'none', md: 'flex' },
@@ -52,6 +85,7 @@ function ResponsiveAppBar() {
 							letterSpacing: '.3rem',
 							color: 'inherit',
 							textDecoration: 'none',
+							cursor: 'default',
 						}}
 						>
 						ZENITEX
@@ -86,18 +120,24 @@ function ResponsiveAppBar() {
 								display: { xs: 'block', md: 'none' },
 							}}
 						>
-							{pages.map((page) => (
-							<MenuItem key={page} onClick={handleCloseNavMenu}>
-								<Typography textAlign="center">{page}</Typography>
+							<MenuItem  onClick={goJoblistMenu}>
+								<Typography textAlign="center">งานซ่อม</Typography>
 							</MenuItem>
-							))}
+
+							<MenuItem  onClick={goReportMenu}>
+								<Typography textAlign="center">แจ้งซ่อม</Typography>
+							</MenuItem>
+
+							<MenuItem  onClick={goDeviceMenu}>
+								<Typography textAlign="center">รายการอุปกรณ์</Typography>
+							</MenuItem>
+							
 						</Menu>
 					</Box>
 					<Typography
 						variant="h5"
 						noWrap
 						component="a"
-						href=""
 						sx={{
 							mr: 2,
 							display: { xs: 'flex', md: 'none' },
@@ -112,46 +152,54 @@ function ResponsiveAppBar() {
 						ZENITEX
 					</Typography>
 					<Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-						{pages.map((page) => (
-							<Button
-								key={page}
-								onClick={handleCloseNavMenu}
-								sx={{ my: 2, color: 'white', display: 'block' }}
-								>
-								{page}
-							</Button>
-						))}
+						<Button
+							onClick={goJoblist}
+							sx={{ my: 2, color: 'white', display: 'block' }}
+							>
+							งานซ่อม
+						</Button>
+						<Button
+							onClick={goReport}
+							sx={{ my: 2, color: 'white', display: 'block' }}
+							>
+							แจ้งซ่อม
+						</Button>
+						<Button
+							onClick={goDevice}
+							sx={{ my: 2, color: 'white', display: 'block' }}
+							>
+							รายการอุปกรณ์
+						</Button>
 					</Box>
 
 					<Box sx={{ flexGrow: 0 }}>
-						<Tooltip title="Profile">
-							<IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-								<Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
-							</IconButton>
-						</Tooltip>
+						<IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+							<Avatar />
+						</IconButton>
 						<Menu
 							sx={{ mt: '45px' }}
-							id="menu-appbar"
-							anchorEl={anchorElUser}
-							anchorOrigin={{
-							vertical: 'top',
-							horizontal: 'right',
+								id="menu-appbar"
+								anchorEl={anchorElUser}
+								anchorOrigin={{
+								vertical: 'top',
+								horizontal: 'right',
 							}}
 							keepMounted
-							transformOrigin={{
-							vertical: 'top',
-							horizontal: 'right',
+								transformOrigin={{
+								vertical: 'top',
+								horizontal: 'right',
 							}}
 							open={Boolean(anchorElUser)}
 							onClose={handleCloseUserMenu}
 						>
 							{settings.map((setting) => (
-							<MenuItem key={setting} onClick={handleCloseUserMenu}>
+							<MenuItem key={setting} onClick={logout}>
 								<Typography textAlign="center">{setting}</Typography>
 							</MenuItem>
 							))}
 						</Menu>
 					</Box>
+
 				</Toolbar>
 			</Container>
 		</AppBar>

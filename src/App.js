@@ -1,16 +1,27 @@
 import * as React from 'react';
 import './App.css';
-import Home from './page/Home.jsx';
 import {Login} from './component/Login.jsx';
+import {Home} from './page/Home.jsx';
+import {Joblist} from './page/Joblist.jsx';
+import {Report} from './page/Report.jsx';
+import {Device} from './page/Device.jsx';
+import {Error} from './page/Error.jsx';
 import CssBaseline from '@mui/material/CssBaseline';
-
-
+import {BrowserRouter, Routes, Route} from 'react-router-dom';
 
 function App() {
 	return (
 		<React.Fragment>
 			<CssBaseline />
-			<Login />
+			<BrowserRouter>
+				<Routes>
+					<Route index element={<Login />} />
+					<Route path="joblist" element={<Joblist />} />
+					<Route path="report" element={<Report />} />
+					<Route path="device" element={<Device />} />
+					<Route path="*" element={<Error />} />
+				</Routes>
+			</BrowserRouter>
 		</React.Fragment>
 	);
 }
