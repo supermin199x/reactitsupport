@@ -15,9 +15,8 @@ import { useNavigate } from "react-router-dom";
 import style from 'styled-components';
 import Typography from '@mui/material/Typography';
 
-
 const Item = styled(Box)(({ theme }) => ({
-	padding: theme.spacing(6),
+	padding: theme.spacing(5),
 	textAlign: 'center',
 	borderRadius: '3px',
 	color: theme.palette.text.secondary,
@@ -25,16 +24,21 @@ const Item = styled(Box)(({ theme }) => ({
 	flexDirection: 'column',
 	rowGap: '10px',
 	width: '400px',
+	height: '530px',
+	backgroundColor: 'white',
+	justifyContent: 'center', 
+	alignItems: 'center'
 }));
  
 const Title = styled(Typography)({
-	fontSize: '30px',
-  	fontWeight: '700',
-	marginBottom:'20px',
-	color: '#2D333A'
+	fontSize: '40px',
+  	fontWeight: '900',
+	marginBottom:'50px',
+	color: '#1567C2'
 });
 
 const ValidationTextField = styled(TextField)({
+	width: '100%',
 	'& input:valid + fieldset': {
 		borderColor: 'green',
 		borderWidth: 2,
@@ -50,8 +54,9 @@ const ValidationTextField = styled(TextField)({
 });
 
 const ButtonLogin = styled(Button)({
+	width: '100%',
 	height: '50px',
-	fontSize: '18px',
+	fontSize: '16px',
 	marginTop: '20px',
 });
 
@@ -59,20 +64,29 @@ export function Login() {
 
 	let navigate = useNavigate();
 
-	const [username, setUsername] = useState();
-	const [password, setPassword] = useState();
+	const [username, setUsername] = useState('');
+	const [password, setPassword] = useState('');
 
-	const handlesubmit = () => {
+	const handlesubmit = (e) => {
 		console.log(username + password);
-		navigate('/joblist');
+		if(username === "admin" && password === "admin")
+		{ 	navigate('/joblist');
+		}
+		else
+		{	alert("ไม่พบผู้ใช้งาน");
+			setUsername('');
+			setPassword('');
+		}
+		
 	}
 
 	return (
-		<Box sx={{ height: '100vh', width: '100vw', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', backgroundColor: '#ffffff' }}>
-			<Grid container padding={10} xl={4}>
+		<Box sx={{ height: '100vh', width: '100vw', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', backgroundColor: '#ddd' }}>
+			<Grid padding={10} xl={4}>
 				<Grid xs={12} padding="0px">
 					<Item>
-						<Title>IT Support</Title>
+
+						<Title>IT SUPPORT</Title>
 						<ValidationTextField
 							label="Username"
 							type="text"

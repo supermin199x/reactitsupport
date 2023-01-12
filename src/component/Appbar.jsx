@@ -125,7 +125,7 @@ function ResponsiveAppBar() {
 							</MenuItem>
 
 							<MenuItem  onClick={goReportMenu}>
-								<Typography textAlign="center">แจ้งซ่อม</Typography>
+								<Typography textAlign="center">รายงาน</Typography>
 							</MenuItem>
 
 							<MenuItem  onClick={goDeviceMenu}>
@@ -162,7 +162,7 @@ function ResponsiveAppBar() {
 							onClick={goReport}
 							sx={{ my: 2, color: 'white', display: 'block' }}
 							>
-							แจ้งซ่อม
+							รายงาน
 						</Button>
 						<Button
 							onClick={goDevice}
