@@ -51,6 +51,10 @@ function ResponsiveAppBar() {
 		setAnchorElNav(null);
 		navigate('/device');
 	};
+	const goDashboard = () => {
+		setAnchorElNav(null);
+		navigate('/dashboard');
+	};
 
 	const logout = () => {
 		navigate('/');
@@ -67,6 +71,10 @@ function ResponsiveAppBar() {
 	const goDeviceMenu = (event) => {
 		setAnchorElNav(event.currentTarget);
 		navigate('/device');
+	};
+	const goDashboardMenu = (event) => {
+		setAnchorElNav(event.currentTarget);
+		navigate('/dashboard');
 	};
 
 	return (
@@ -131,6 +139,10 @@ function ResponsiveAppBar() {
 							<MenuItem  onClick={goDeviceMenu}>
 								<Typography textAlign="center">รายการอุปกรณ์</Typography>
 							</MenuItem>
+
+							<MenuItem  onClick={goDashboardMenu}>
+								<Typography textAlign="center">Dashboard</Typography>
+							</MenuItem>
 							
 						</Menu>
 					</Box>
@@ -169,6 +181,12 @@ function ResponsiveAppBar() {
 							sx={{ my: 2, color: 'white', display: 'block' }}
 							>
 							รายการอุปกรณ์
+						</Button>
+						<Button
+							onClick={goDashboard}
+							sx={{ my: 2, color: 'white', display: 'block' }}
+							>
+							Dashboard
 						</Button>
 					</Box>
 

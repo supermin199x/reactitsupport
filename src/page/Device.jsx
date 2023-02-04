@@ -33,14 +33,14 @@ const Item = styled(Paper)(({ theme }) => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    fontSize: '22px',
-    width: '200px',
+    fontSize: '36px',
+    fontWeight: '700',
+    width: '18.4%',
     height: '200px',
     cursor: 'pointer',
 }));
 
 const BoxItem = styled(Box)(() => ({
-    overflowY: 'scroll',
     height: '75vh',
 }));
 
@@ -49,116 +49,27 @@ const lightTheme = createTheme({ palette: { mode: 'light' } });
 const computer = [
     {
         id: '1',
-        label: 'hawk',
+        label: 'COMPUTERS',
     },
     {
         id: '2',
-        label: 'chamomile',
-    },
+        label: 'PRINTERS',
+    }
+    ,
     {
         id: '3',
-        label: 'swan',
-    },
+        label: 'NETWORKS',
+    }
+    ,
     {
         id: '4',
-        label: 'leopard',
-    },
+        label: 'UPS',
+    }
+    ,
     {
         id: '5',
-        label: 'skunk',
-    },
-    {
-        id: '6',
-        label: 'goat',
-    },
-    {
-        id: '6',
-        label: 'toad',
-    },
-    {
-        id: '1',
-        label: 'hawk',
-    },
-    {
-        id: '2',
-        label: 'chamomile',
-    },
-    {
-        id: '3',
-        label: 'swan',
-    },
-    {
-        id: '4',
-        label: 'leopard',
-    },
-    {
-        id: '5',
-        label: 'skunk',
-    },
-    {
-        id: '6',
-        label: 'goat',
-    },
-    {
-        id: '6',
-        label: 'toad',
-    },
-    {
-        id: '1',
-        label: 'hawk',
-    },
-    {
-        id: '2',
-        label: 'chamomile',
-    },
-    {
-        id: '3',
-        label: 'swan',
-    },
-    {
-        id: '4',
-        label: 'leopard',
-    },
-    {
-        id: '5',
-        label: 'skunk',
-    },
-    {
-        id: '6',
-        label: 'goat',
-    },
-    {
-        id: '6',
-        label: 'toad',
-    },
-    {
-        id: '1',
-        label: 'hawk',
-    },
-    {
-        id: '2',
-        label: 'chamomile',
-    },
-    {
-        id: '3',
-        label: 'swan',
-    },
-    {
-        id: '4',
-        label: 'leopard',
-    },
-    {
-        id: '5',
-        label: 'skunk',
-    },
-    {
-        id: '6',
-        label: 'goat',
-    },
-    {
-        id: '6',
-        label: 'toad',
-    },
+        label: 'CCTVS',
+    }
 ]
 
 export function Device() {
@@ -190,9 +101,9 @@ export function Device() {
                         bgcolor: 'background.default',
                         display: 'flex',
                         flexDirection: 'row',
-                        flexWrap: 'wrap',
-                        columnGap: '50px',
-                        rowGap: '50px',
+                        width: '100%',
+                        columnGap: '2%',
+                        rowGap: '20px',
                     }}
                     >
                     {computer.map((item) => (

@@ -16,7 +16,7 @@ import style from 'styled-components';
 import Typography from '@mui/material/Typography';
 
 const Item = styled(Box)(({ theme }) => ({
-	padding: theme.spacing(5),
+	padding: theme.spacing(3),
 	textAlign: 'center',
 	borderRadius: '3px',
 	color: theme.palette.text.secondary,
@@ -24,7 +24,7 @@ const Item = styled(Box)(({ theme }) => ({
 	flexDirection: 'column',
 	rowGap: '10px',
 	width: '400px',
-	height: '530px',
+	height: 'fit-content',
 	backgroundColor: 'white',
 	justifyContent: 'center', 
 	alignItems: 'center'
@@ -33,8 +33,8 @@ const Item = styled(Box)(({ theme }) => ({
 const Title = styled(Typography)({
 	fontSize: '40px',
   	fontWeight: '900',
-	marginBottom:'50px',
-	color: '#1567C2'
+	marginBottom:'30px',
+	color: '#1567C2',
 });
 
 const ValidationTextField = styled(TextField)({
@@ -60,10 +60,9 @@ const ButtonLogin = styled(Button)({
 	marginTop: '20px',
 });
 
+
 export function Login() {
-
 	let navigate = useNavigate();
-
 	const [username, setUsername] = useState('');
 	const [password, setPassword] = useState('');
 
@@ -77,15 +76,13 @@ export function Login() {
 			setUsername('');
 			setPassword('');
 		}
-		
 	}
 
 	return (
-		<Box sx={{ height: '100vh', width: '100vw', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', backgroundColor: '#ddd' }}>
+		<Box sx={{ height: '100vh', width: '100vw', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', backgroundColor: '#F6F7F9' }}>
 			<Grid padding={10} xl={4}>
 				<Grid xs={12} padding="0px">
 					<Item>
-
 						<Title>IT SUPPORT</Title>
 						<ValidationTextField
 							label="Username"
